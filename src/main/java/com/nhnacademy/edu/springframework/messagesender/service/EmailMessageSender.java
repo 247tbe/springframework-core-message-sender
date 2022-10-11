@@ -5,7 +5,7 @@ import com.nhnacademy.edu.springframework.messagesender.User;
 public class EmailMessageSender implements MessageSender {
 
     public EmailMessageSender() {
-        System.out.println("싱글턴");
+        System.out.println("싱글톤");
     }
 
     public void init() {

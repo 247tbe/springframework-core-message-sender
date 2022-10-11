@@ -14,21 +14,23 @@ public class Main {
         String location = "classpath:/beans.xml";
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(location);
 
-        User user = new User("123@123", "000");
-        String message = "Hi";
-
-        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-        context.getBean("emailMessageSender", MessageSender.class).sendMessage(user, message);
-        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-        context.getBean("emailMessageSender", MessageSender.class).sendMessage(user, message);
-        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-        context.getBean("smsMessageSender", MessageSender.class).sendMessage(user, message);
-        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-        context.getBean("smsMessageSender", MessageSender.class).sendMessage(user, message);
-        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-
-        context.close(); // cleanup을 위해 닫아준다.
-        System.out.println("********************************");
+        MessageSendService messageSendService = context.getBean("messageSendService", MessageSendService.class);
+        messageSendService.doSendMessage();
+//        User user = new User("123@123", "000");
+//        String message = "Hi";
+//
+//        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//        context.getBean("emailMessageSender", MessageSender.class).sendMessage(user, message);
+//        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//        context.getBean("emailMessageSender", MessageSender.class).sendMessage(user, message);
+//        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//        context.getBean("smsMessageSender", MessageSender.class).sendMessage(user, message);
+//        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//        context.getBean("smsMessageSender", MessageSender.class).sendMessage(user, message);
+//        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+//
+//        context.close(); // cleanup을 위해 닫아준다.
+//        System.out.println("********************************");
 
 //        String name = "com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender";
 //        MessageSender messageSender = MessageSender.class.cast()
