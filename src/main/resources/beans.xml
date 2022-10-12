@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <context:annotation-config />
+    <context:property-placeholder location="classpath:sender.properties" />
+
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 
     <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender"
           scope="singleton"
@@ -16,8 +23,12 @@
     </bean>
 
     <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender"
-          scope="prototype"
+          primary="true"
     >
+        <qualifier type="com.nhnacademy.edu.springframework.messagesender.annotation.SMS">
+            <attribute key="sender" value="SMS"/>
+            <attribute key="dummy" value="true"/>
+        </qualifier>
     </bean>
 
 <!--    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.service.MessageSendService">-->
@@ -25,8 +36,7 @@
 <!--        <constructor-arg ref="smsMessageSender" />-->
 <!--    </bean>-->
 
-    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.service.MessageSendService"
-    autowire="byName">
+    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.service.MessageSendService">
 <!--        <property name="messageSender" ref="emailMessageSender" />-->
     </bean>
 

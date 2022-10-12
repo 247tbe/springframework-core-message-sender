@@ -6,7 +6,7 @@ public class SmsMessageSender implements MessageSender {
 
 
     public SmsMessageSender() {
-        System.out.println("프로토타입");
+        System.out.println("SMS initialized");
     }
     @Override
     public void sendMessage(User user, String message) {
