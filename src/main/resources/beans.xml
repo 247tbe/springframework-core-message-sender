@@ -13,23 +13,23 @@
 
     <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor" />
 
-    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender"
-          scope="singleton"
-          init-method="init"
-          destroy-method="cleanup"
-    >
-        <!-- Only one instance is ever created -->
-        <!-- 초기화 작업 -->
-    </bean>
+<!--    <bean id="emailMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.EmailMessageSender"-->
+<!--          scope="singleton"-->
+<!--          init-method="init"-->
+<!--          destroy-method="cleanup"-->
+<!--    >-->
+<!--        &lt;!&ndash; Only one instance is ever created &ndash;&gt;-->
+<!--        &lt;!&ndash; 초기화 작업 &ndash;&gt;-->
+<!--    </bean>-->
 
-    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender"
-          primary="true"
-    >
-        <qualifier type="com.nhnacademy.edu.springframework.messagesender.annotation.SMS">
-            <attribute key="sender" value="SMS"/>
-            <attribute key="dummy" value="true"/>
-        </qualifier>
-    </bean>
+<!--    <bean id="smsMessageSender" class="com.nhnacademy.edu.springframework.messagesender.service.SmsMessageSender"-->
+<!--          primary="true"-->
+<!--    >-->
+<!--        <qualifier type="com.nhnacademy.edu.springframework.messagesender.annotation.SMS">-->
+<!--            <attribute key="sender" value="SMS"/>-->
+<!--            <attribute key="dummy" value="true"/>-->
+<!--        </qualifier>-->
+<!--    </bean>-->
 
 <!--    <bean id="messageSendService" class="com.nhnacademy.edu.springframework.messagesender.service.MessageSendService">-->
 <!--        <constructor-arg ref="emailMessageSender"/>-->
