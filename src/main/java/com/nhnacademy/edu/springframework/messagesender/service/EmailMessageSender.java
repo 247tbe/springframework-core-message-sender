@@ -1,7 +1,7 @@
 package com.nhnacademy.edu.springframework.messagesender.service;
 
 import com.nhnacademy.edu.springframework.messagesender.User;
-import org.springframework.stereotype.Component;
+import com.nhnacademy.edu.springframework.messagesender.annotation.TimeLogging;
 
 //@Component
 // emailMessageSender
@@ -18,7 +18,9 @@ public class EmailMessageSender implements MessageSender {
         System.out.println(" + EmailMessageSender cleanup called");
     }
     @Override
-    public void sendMessage(User user, String message) {
+//    @TimeLogging("emailMessageSender")
+    public boolean sendMessage(User user, String message) {
         System.out.println("Email Message Sent " + user.getEmail() + " : " + message);
+        return true;
     }
 }

@@ -43,9 +43,11 @@ public class MessageSendService {
 //        this.smsMessageSender = smsMessageSender;
 //    }
 
-    public void doSendMessage() {
-        System.out.print("From " + this.from + " ");
-        messageSender.sendMessage(new User("JSH2@korea.com", "010-1234-5678"), "Hello");
+    public boolean doSendMessage() {
+//        System.out.print("From " + this.from + " ");
+        boolean rtn = messageSender.sendMessage(new User("JSH2@korea.com", "010-1234-5678"), "Hello");
+        System.out.println("Return from MessageSender " + rtn);
+        return rtn;
 
 //        User user = new User("JSH827@ko.com", "010-1111-9999");
 //        String msg = "Good";

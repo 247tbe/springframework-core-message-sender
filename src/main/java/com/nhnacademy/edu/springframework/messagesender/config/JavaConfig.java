@@ -8,12 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ComponentScan(basePackages = "com.nhnacademy.edu.springframework.messagesender")
 @PropertySource("classpath:/sender.properties")
+@EnableAspectJAutoProxy
 //@ImportResource("classpath:/beans.xml")
 public class JavaConfig {
     @Bean("smsMessageSender")
